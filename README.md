@@ -28,5 +28,11 @@ To compile this contract
 ```solidity
 forge compile Counter.sol:Counter
 ```
+You can use --names to compile only one contract from src folder
+```solidity
+forge compile --names Counter.sol
+```
+
+
 
 
