@@ -30,8 +30,34 @@ forge compile Counter.sol:Counter
 ```
 You can use --names to compile only one contract from src folder
 ```solidity
-forge compile --names Counter.sol
+forge compile --names contractName
 ```
+ Print compiled contract sizes
+ ```solidity
+forge compile --sizes
+```
+Skip building files whose names contain the given filter.
+```solidity
+forge compile --skip  contractName
+```
+## Deploy
+Script to deploy contract
+```solidity
+//SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+import "../src/Counter.sol";
+import "forge-std/Script.sol";
+
+contract DeployCounter is Script{
+    function run() external {
+        vm.startBroadcast();
+        Counter counter= new Counter();
+
+        vm.stopBroadcast();
+    }
+}
+```
+
 
 
 
