@@ -109,6 +109,68 @@ Watch mode
 ```solidity
 forge test --watch
 ```
+setUp: An optional function invoked before each test case is run.
+```solidity
+//SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+import "forge-std/Test.sol";
+import "../src/Counter.sol";
+
+contract CounterTest is Test{
+    Counter counter = new Counter();
+
+   /* function setUp() public {
+      counter = new Counter();
+    }*/
+
+    function testIntialValue()public view  {
+       assertEq(counter.getCount(),0);
+    }
+
+     function testIncrement() public {
+        counter.increment();
+        assertEq(counter.getCount(), 1);
+    }
+
+    function testDecrement() public {
+        counter.decrement();
+        assertEq(counter.getCount(),0);
+    }
+}
+```
+testFail: The inverse of the test prefix - if the function does not revert, the test fails.
+```solidity
+
+//SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+import "forge-std/Test.sol";
+import "../src/Counter.sol";
+
+contract CounterTest is Test{
+    Counter counter = new Counter();
+
+   /* function setUp() public {
+      counter = new Counter();
+    }*/
+
+    function testIntialValue()public view  {
+
+       assertEq(counter.getCount(),0);
+    }
+
+     function testFailIncrement() public {
+        counter.increment();
+        assertEq(counter.getCount(), 0);
+
+
+    }
+
+    function testDecrement() public {
+        counter.decrement();
+        assertEq(counter.getCount(),0);
+    }
+}
+```
 
 
 
