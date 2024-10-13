@@ -94,10 +94,23 @@ forge test --match-contract <contractName> --match-test <contractFunction>
 forge test --match-contract CounterTest --match-test testIncrement
 ```
 You can run tests in filenames that match a glob pattern with --match-path.
-
+The inverse of the --match-path flag is --no-match-path.
 ```solidity
-forge test --match-path test/Counter.t.sol:CounterTest
+forge test --match-path test/Counter.t.sol
 ```
+Logs and traces use this command v from verbosity
+```solidity
+forge test -vv
+forge test -vvv
+forge test -vvvv
+forge test -vvvv
+```
+Watch mode
+```solidity
+forge test --watch
+```
+
+
 
 
 
