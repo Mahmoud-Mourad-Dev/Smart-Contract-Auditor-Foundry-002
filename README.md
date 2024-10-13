@@ -57,6 +57,47 @@ contract DeployCounter is Script{
     }
 }
 ```
+## Test
+write test 
+```solidity
+//SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+import "forge-std/Test.sol";
+import "../src/Counter.sol";
+
+contract CounterTest is Test{
+    Counter counter;
+    function setUp() public {
+      counter = new Counter();
+    }
+    function testIntialValue()public {
+
+       assertEq(counter.getCount(),0);
+    }
+     function testIncrement() public{
+        counter.increment();
+        assertEq(counter.getCount(), 1);
+    }
+
+    function testDecrement() public{
+        counter.decrement();
+        assertEq(counter.getCount(),0);
+    }
+}
+
+```
+You can also run specific tests by passing a filter ,Inverse versions of these flags also exist (--no-match-contract and --no-match-test).
+You can run tests in filenames that match a glob pattern with --match-path.
+
+```silidity
+forge test --match-contract <contractName> --match-test <contractFunction>
+forge test --match-contract CounterTest --match-test testIncrement
+```
+You can run tests in filenames that match a glob pattern with --match-path.
+
+```solidity
+forge test --match-path test/Counter.t.sol:CounterTest
+```
 
 
 
